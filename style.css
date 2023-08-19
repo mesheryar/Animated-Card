@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #333;
+}
+.container{
+    position: relative;
+    display: flex;
+    padding: 80px 40px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 80px;
+}
+.card{
+    position: relative;
+    width: 350px;
+    height: 180px;
+    background: #333;
+    transition: 0.5s;
+}
+.card:hover{
+    height: 450px;
+}
+.lines{
+    position: absolute;
+    inset: 0;
+    background: #000;
+    overflow: hidden;
+}
+.lines::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 120px;
+    background: linear-gradient(transparent,#45f3ff,#45f3ff,#45f3ff,transparent);
+    animation: animate 4s linear infinite;
+    animation-play-state: paused;
+}
+.card:hover .lines::before{
+animation-play-state: running;
+}
+@keyframes animate{
+    0%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+.lines::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #292929;
+}
+.imgBx{
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    transform: translateX(-50%);
+    background: black;
+    transition: 0.5s;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card:hover .imgBx{
+    top: 25px;
+    width: 200px;
+    height: 200px;
+}
+.card .imgBx::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 150px;
+    transform: translate(-50%,-50%);
+    background: linear-gradient(transparent,#ff3c7b,#ff3c7b,#ff3c7b,transparent);
+    animation: animate2 6s linear infinite;
+}
+.card:hover .imgBx::before{
+    animation-play-state: running;
+}
+@keyframes animate2 {
+    0%{
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+    100%{
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+}
+.card .imgBx::after{
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: #292929;
+}
+.imgBx img{
+    position: absolute;
+    z-index: 1;
+    filter: invert(1);
+    opacity: 0.5;
+    transition: 0.5s;
+    height: 180px;
+}
+.card:hover .imgBx img{
+    opacity: 1;
+}
+.card .content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+.details{
+    padding: 30px 20px;
+    text-align: center;
+    width: 100%;
+     transition: 0.5s;
+     transform: translateY(245px);
+}
+.card:hover .details {
+    transform: translateY(0px);
+}
+.details h2{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #45f3ff;
+    line-height: 1.2rem;
+}
+.details p {
+    opacity: 0.5;
+    color: white;
+    transition: 0.5s;
+}
+.card:hover .details p{
+    opacity: 1;
+}
+.details a{
+    display: inline-block;
+    padding: 8px 15px;
+    background: #45f3ff;
+    color: #292929;
+    margin-top: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 0;
+    transition: 0.5s;
+}
+.card:hover .details p,
+.card:hover .details a{
+    opacity: 1;
+}
